@@ -64,15 +64,7 @@ const images = [
     },
   ];
 
-  //const communEl = document.querySelector(".gallery");
-  //communEl.addEventListener("click", picktureClick);
-  //function picktureClick(event) {
-//if (!event.target.classList.containes.images.preview) {
-   //   return;
-  //  }
-  //  console.log(event.target.images.original);
-   // };
-
+ 
    const container = document.querySelector(".gallery");
 
  function generateImage(images) { 
