@@ -1,7 +1,7 @@
 const images = [
     {
       preview:
-        'https://cdn.pixabay.com/photo/2019/05/14/16/43/rchids-4202820__480.jpg',
+        'https://cdn.pixabay.com/photo/2019/05/14/16/43/rchids-4202820__340.jpg',
       original:
         'https://cdn.pixabay.com/photo/2019/05/14/16/43/rchids-4202820_1280.jpg',
       description: 'Hokkaido Flower',
@@ -63,3 +63,55 @@ const images = [
       description: 'Lighthouse Coast Sea',
     },
   ];
+
+  //const communEl = document.querySelector(".gallery");
+  //communEl.addEventListener("click", picktureClick);
+  //function picktureClick(event) {
+//if (!event.target.classList.containes.images.preview) {
+   //   return;
+  //  }
+  //  console.log(event.target.images.original);
+   // };
+
+   const container = document.querySelector(".gallery");
+
+ function generateImage(images) { 
+  return images
+ .map(image => {
+  return `
+<li>
+            <a class="gallery-link" href="image.original.jpg">
+                <img
+                  class="gallery-image"
+                  src="${image.preview}"
+                  data-source="${image.original}"
+                  alt="${image.description}"
+                />
+              </a>
+        </li>
+`;
+ })
+
+ .join("");
+
+}
+
+container.insertAdjacentHTML("beforeend", generateImage(images));
+
+container. addEventListener("click", picktureClick);
+
+function picktureClick(event) {
+  event.preventDefault();
+  const target = event.target;
+
+  if (target.classList.contains('gallery-image')) {
+    const largeImageSrc = target.dataset.source;
+
+    
+    const instance = basicLightbox.create(`
+      <img src="${largeImageSrc}" width="800" height="600">
+    `);
+    
+    instance.show();
+  }
+}
